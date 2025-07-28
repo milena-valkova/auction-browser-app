@@ -112,20 +112,37 @@ Category
 
 ---
 
+📁 Project Structure (Simplified)
+
+```bash
+
+src/
+├── components/        # UI components (Filters, AuctionCard, etc.)
+├── pages/             # Route pages (Home, ItemList, ItemDetail)
+├── context/           # pp context files
+├── hooks/             # Custom hooks (e.g., data fetch)
+├── utils/             # Helpers functions and type definitions
+├── assets/            # Images, icons, styles
+├── App.tsx
+├── main.tsx
+```
+
+---
+
 ## 📸 Screenshots
 
 ### 1. Home Page
 
-![Item List](public/screenshots/home_page.png)
+![Item List](https://github.com/milena-valkova/auction-browser-app/blob/main/public/screenshots/home_page.png)
 
 ### 2. Item List
 
-![Item List](public/screenshots/list_items.png)
+![Item List](https://github.com/milena-valkova/auction-browser-app/blob/main/public/screenshots/list_items.png)
 
 ### 3. Search & Filters
 
-![Item List](public/screenshots/filtering.png)
+![Item List](https://github.com/milena-valkova/auction-browser-app/blob/main/public/screenshots/filtering.png)
 
 ### 4. Item Detail View
 
-![Item List](public/screenshots/item_details.png)
+![Item List](https://github.com/milena-valkova/auction-browser-app/blob/main/public/screenshots/item_details.png)
