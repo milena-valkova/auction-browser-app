@@ -6,7 +6,7 @@ const AUCTION_LOTS = "/api/lots";
 
 const useFetch = () => {
   const [auctionItems, setAuctionItems] = useState<AuctionItem[]>([]);
-  const { setLoading } = use(AppContext);
+  const { setLoading, setCategories } = use(AppContext);
 
   useEffect(() => {
     setLoading(true);
@@ -14,7 +14,13 @@ const useFetch = () => {
       .then((res) => {
         return res.json();
       })
-      .then((data: AuctionItem[]) => setAuctionItems(data))
+      .then((data: AuctionItem[]) => {
+        setAuctionItems(data);
+
+        //It's better if has an API for categories
+        const categories = new Set(data.map((item) => item.category));
+        setCategories(Array.from(categories));
+      })
       .catch((err: Error) => console.error(err))
       .finally(() => setLoading(false));
   }, []);

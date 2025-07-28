@@ -1,29 +1,16 @@
 import { useMemo } from "react";
 import { ItemStatus, type AuctionItem } from "../../utils/appTypes";
-import { formatDate, formatPrice } from "../../utils/commonFunctions";
+import {
+  formatDate,
+  formatPrice,
+  statusColor,
+  textForEnd,
+} from "../../utils/commonFunctions";
 import { generatePath, Link } from "react-router";
 
-const AuctionCard = ({
-  id,
-  title,
-  category,
-  estimatedValue,
-  imageUrl,
-  endDate,
-  status,
-}: AuctionItem) => {
-  const statusColor = useMemo(() => {
-    switch (status) {
-      case ItemStatus.live:
-        return "bg-emerald-500";
-      case ItemStatus.upcoming:
-        return "bg-amber-500";
-      case ItemStatus.ended:
-        return "bg-red-500";
-      default:
-        return "bg-indigo-500";
-    }
-  }, [status]);
+const AuctionCard = ({ item }: { item: AuctionItem }) => {
+  const { id, title, category, estimatedValue, imageUrl, endDate, status } =
+    item;
 
   const hoverTextColor = useMemo(() => {
     switch (status) {
@@ -38,18 +25,10 @@ const AuctionCard = ({
     }
   }, [status]);
 
-  const textForEnd = useMemo(() => {
-    switch (status) {
-      case ItemStatus.ended:
-        return "Ended";
-      default:
-        return "End";
-    }
-  }, [status]);
-
   return (
     <Link
       to={generatePath("/items/:itemId", { itemId: id.toString() })}
+      state={item}
       className="group w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl hover:cursor-pointer hover:transform-origin-center"
     >
       <div className="relative">
@@ -60,14 +39,18 @@ const AuctionCard = ({
           className="h-50 lg:h-80 w-72 object-cover rounded-t-xl"
         />
         <div
-          className={`uppercase text-sm absolute top-0 right-0 ${statusColor} px-4 text-white rounded-full h-8 w-auto flex flex-col items-center justify-center mt-3 mr-3 group-hover:bg-white ${hoverTextColor} transition duration-500 ease-in-out`}
+          className={`uppercase text-sm absolute top-0 right-0 ${statusColor(
+            status
+          )} px-4 text-white rounded-full h-8 w-auto flex flex-col items-center justify-center mt-3 mr-3 group-hover:bg-white ${hoverTextColor} transition duration-500 ease-in-out`}
         >
           <small>{status}</small>
         </div>
         <div
-          className={`absolute bottom-0 left-0 ${statusColor} p-2 text-white text-sm group-hover:bg-white ${hoverTextColor} transition duration-500 ease-in-out`}
+          className={`absolute bottom-0 left-0 ${statusColor(
+            status
+          )} p-2 text-white text-sm group-hover:bg-white ${hoverTextColor} transition duration-500 ease-in-out`}
         >
-          {`${textForEnd}: ${formatDate(endDate)}`}
+          {`${textForEnd(status)}: ${formatDate(endDate)}`}
         </div>
       </div>
       <div className="px-4 py-3 w-72 group">

@@ -7,9 +7,16 @@ const itemsPerPage = 20;
 
 function AuctionList({ auctionItems }: { auctionItems: AuctionItem[] }) {
   // State to store the currently displayed items (loaded so far)
+
   const [displayItems, setDisplayItems] = useState<AuctionItem[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const observer = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    setDisplayItems([]);
+    setHasMore(true);
+    loadingRef.current = false;
+  }, [auctionItems]);
 
   // Ref to prevent double-loading items (avoids repeated calls)
   const loadingRef = useRef(false);
@@ -53,6 +60,12 @@ function AuctionList({ auctionItems }: { auctionItems: AuctionItem[] }) {
   );
 
   useEffect(() => {
+    if (displayItems.length === 0 && auctionItems.length > 0) {
+      loadMoreItems();
+    }
+  }, [displayItems.length, auctionItems, loadMoreItems]);
+
+  useEffect(() => {
     loadMoreItems();
   }, []);
 
@@ -63,7 +76,7 @@ function AuctionList({ auctionItems }: { auctionItems: AuctionItem[] }) {
           const isLast = index === displayItems.length - 1;
           return (
             <div ref={isLast ? lastItemRef : null} key={item.id}>
-              <AuctionCard {...item} />
+              <AuctionCard item={item} />
             </div>
           );
         })}
