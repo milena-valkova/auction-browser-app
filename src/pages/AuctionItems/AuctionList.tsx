@@ -5,7 +5,7 @@ import AuctionCard from "./AuctionCard";
 
 const itemsPerPage = 20;
 
-function AuctionItemsList({ auctionItems }: { auctionItems: AuctionItem[] }) {
+function AuctionList({ auctionItems }: { auctionItems: AuctionItem[] }) {
   // State to store the currently displayed items (loaded so far)
   const [displayItems, setDisplayItems] = useState<AuctionItem[]>([]);
   const [hasMore, setHasMore] = useState(true);
@@ -58,7 +58,7 @@ function AuctionItemsList({ auctionItems }: { auctionItems: AuctionItem[] }) {
 
   return (
     <section className="w-full px-6 py-6 mx-auto">
-      <div className="w-fit mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5 overflow-visible">
+      <div className="w-fit mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-items-center justify-center gap-y-10 lg:gap-y-20 gap-x-6 lg:gap-x-14 mt-10 mb-5 overflow-visible">
         {displayItems.map((item: AuctionItem, index: number) => {
           const isLast = index === displayItems.length - 1;
           return (
@@ -77,4 +77,4 @@ function AuctionItemsList({ auctionItems }: { auctionItems: AuctionItem[] }) {
   );
 }
 
-export default AuctionItemsList;
+export default AuctionList;

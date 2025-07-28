@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { ItemStatus, type AuctionItem } from "../../utils/appTypes";
 import { formatDate, formatPrice } from "../../utils/commonFunctions";
+import { generatePath, Link } from "react-router";
 
 const AuctionCard = ({
   id,
@@ -47,13 +48,16 @@ const AuctionCard = ({
   }, [status]);
 
   return (
-    <div className="group w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl hover:cursor-pointer hover:transform-origin-center">
+    <Link
+      to={generatePath("/items/:itemId", { itemId: id.toString() })}
+      className="group w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl hover:cursor-pointer hover:transform-origin-center"
+    >
       <div className="relative">
         <img
           loading="lazy"
           src={imageUrl}
           alt={`Product-${id}`}
-          className="h-80 w-72 object-cover rounded-t-xl"
+          className="h-50 lg:h-80 w-72 object-cover rounded-t-xl"
         />
         <div
           className={`uppercase text-sm absolute top-0 right-0 ${statusColor} px-4 text-white rounded-full h-8 w-auto flex flex-col items-center justify-center mt-3 mr-3 group-hover:bg-white ${hoverTextColor} transition duration-500 ease-in-out`}
@@ -82,7 +86,7 @@ const AuctionCard = ({
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

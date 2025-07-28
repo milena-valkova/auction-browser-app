@@ -19,3 +19,7 @@ export function formatDate(
   const date = typeof dateInput === "string" ? new Date(dateInput) : dateInput;
   return new Intl.DateTimeFormat(locale, options).format(date);
 }
+
+export function capitalizeFirstLetter(value: string) {
+  return String(value).charAt(0).toUpperCase() + String(value).slice(1);
+}
