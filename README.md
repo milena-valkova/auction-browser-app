@@ -1,69 +1,131 @@
-# React + TypeScript + Vite
+# 🖼️ Auction Viewer App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive auction listing web app built with **Vite + React + TypeScript + Tailwind CSS**.  
+It loads and displays auction items from provided JSON data and allows users to **search**, **filter**, and **browse item details**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+### 1. Clone the repo:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/milena-valkova/auction-browser-app.git
+cd auction-browser-app
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 3. Start the development server::
+
+```bash
+npm run dev
+```
+
+The app will be available at: http://localhost:5173
+
+## 🚀 Pages Overview
+
+### 1. Home Page
+
+Simple welcome screen
+
+Redirects to the item list page
+
+### 2. Item List
+
+Displays all auction items in a responsive grid
+
+Supports infinite scroll/pagination
+
+### 3. Search & Filters
+
+Search by title or estimated price
+
+Filter by category
+
+Combined filter logic (search + category work together)
+
+### 4. Item Cards
+
+Compact cards show:
+
+Item image
+
+Title
+
+Estimated price
+
+Basic details
+
+### 5. Item Detail View
+
+Dedicated page for selected item
+
+Shows full info like:
+
+Title
+
+Image
+
+Description
+
+Estimated value
+
+Category
+
+---
+
+## 🔍 Functionality
+
+✅ Search items by title or price
+
+✅ Filter by category
+
+✅ Combined search & filter
+
+✅ Responsive layout (mobile to desktop)
+
+✅ Navigation between components and detail views
+
+✅ Uses provided JSON data (320 items)
+
+✅ BONUS: Added IntersectionObserver to load items on scroll
+
+---
+
+## 🧱 Tech Stack
+
+⚛️ React + TypeScript
+
+🧩 Vite for fast development
+
+🎨 Tailwind CSS for styling
+
+🎯 State management with React Hooks (useState, useEffect, useContext)
+
+🧠 Clean, modular component structure
+
+---
+
+## 📸 Screenshots
+
+### 1. Home Page
+
+![Item List](public/screenshots/home_page.png)
+
+### 2. Item List
+
+![Item List](public/screenshots/list_items.png)
+
+### 3. Search & Filters
+
+![Item List](public/screenshots/filtering.png)
+
+### 4. Item Detail View
+
+![Item List](public/screenshots/item_details.png)
