@@ -133,16 +133,16 @@ src/
 
 ### 1. Home Page
 
-![Item List](https://github.com/milena-valkova/auction-browser-app/blob/main/public/screenshots/home_page.png)
+![Home](https://github.com/milena-valkova/auction-browser-app/blob/main/public/screenshots/home_page.PNG)
 
 ### 2. Item List
 
-![Item List](https://github.com/milena-valkova/auction-browser-app/blob/main/public/screenshots/list_items.png)
+![Item List](https://github.com/milena-valkova/auction-browser-app/blob/main/public/screenshots/list_items.PNG)
 
 ### 3. Search & Filters
 
-![Item List](https://github.com/milena-valkova/auction-browser-app/blob/main/public/screenshots/filtering.png)
+![Filters](https://github.com/milena-valkova/auction-browser-app/blob/main/public/screenshots/filtering.PNG)
 
 ### 4. Item Detail View
 
-![Item List](https://github.com/milena-valkova/auction-browser-app/blob/main/public/screenshots/item_details.png)
+![Detail View](https://github.com/milena-valkova/auction-browser-app/blob/main/public/screenshots/item_details.PNG)
